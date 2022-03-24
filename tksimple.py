@@ -1,3 +1,4 @@
+import time
 import tkinter as tk
 
 class Application(tk.Frame):
@@ -8,7 +9,14 @@ class Application(tk.Frame):
 
     def createWidgets(self):
         self.quitButton = tk.Button(self, text='Quit', command=self.quit)
+        self.timeButton = tk.Button(self, text='Time', command=self.settime)
+        self.timeLabel = tk.Label(self, text='<time>')
         self.quitButton.grid()
+        self.timeButton.grid()
+        self.timeLabel.grid()
+
+    def settime(self):
+        self.timeLabel['text'] = time.strftime('%c')
 
 app = Application()
 app.master.title('Sample application')
